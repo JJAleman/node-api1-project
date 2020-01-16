@@ -44,3 +44,16 @@ server.post('/api/users', (req, res) => {
     //     }
     // })
     
+    // ----------------------
+    // GET request for users
+    // ------------------------
+
+    server.get('/api/users', (req, res) => {
+        db.find()
+        .then(users => {
+            res.status(200).json(users);
+        })
+        .catch(err => {
+            res.status(500).json({success: false, errorMessage: "The users information could not be retrieved." })
+        });
+    });
